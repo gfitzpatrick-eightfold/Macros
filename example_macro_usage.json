@@ -1,0 +1,2964 @@
+{
+  "custom_fields_v2": {
+    "add_application": {
+      "424": {
+        "coverLetter": {
+          "macro": "standard_macros.chained_macro",
+          "kwargs": {
+            "inner_macro_list": [
+              {
+                "macro": "successfactor_macros.extract_attachment_payload",
+                "kwargs": {
+                  "question_id": "cover_letter2"
+                }
+              },
+              {
+                "macro": "adapter_macros.substitute_template",
+                "kwargs": {
+                  "template_string": "{{ macro_values[0] if macro_values[0] else None }}"
+                }
+              }
+            ]
+          }
+        },
+        "customEthnicity": {
+          "kwargs": {
+            "question_id": "q_customEthnicity",
+            "picklist_id": "ethnicity"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customGenderPostOffer": {
+          "kwargs": {
+            "question_id": "q_customGenderPostOffer",
+            "picklist_id": "rmGender",
+            "default": "67470"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "middleName": {
+          "kwargs": {
+            "question_id": "q_middleName"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "state": {
+          "macro": "standard_macros.chained_macro",
+          "kwargs": {
+            "inner_macro_list": [
+              {
+                "macro": "successfactor_macros.extract_app_qna_value",
+                "kwargs": {
+                  "question_id": "q_country"
+                }
+              },
+              {
+                "macro": "successfactor_macros.extract_app_qna_value",
+                "kwargs": {
+                  "question_id": "q_state_q_country_{{ macro_values[0] }}",
+                  "picklist_id": "rmState"
+                }
+              }
+            ]
+          }
+        },
+        "appLocale": {
+          "macro": "standard_macros.chained_macro",
+          "kwargs": {
+            "inner_macro_list": [
+              {
+                "kwargs": {
+                  "template_string": "{{ candidate.applications[0].custom_info.get('apply_locale', 'en_US') if candidate.applications and candidate.applications[0].custom_info else 'en_US' }}"
+                },
+                "macro": "adapter_macros.substitute_template"
+              },
+              {
+                "macro": "successfactor_macros.transform_value_field",
+                "kwargs": {
+                  "value": "{{ macro_values[0] }}",
+                  "value_remap": {
+                    "English US": "en_US",
+                    "en-US": "en_US",
+                    "en_US": "en_US",
+                    "en": "en_US",
+                    "English": "en_US",
+                    "Chinese": "zh_CN",
+                    "简体中文": "zh_CN",
+                    "zh_CN": "zh_CN",
+                    "zh-CN": "zh_CN",
+                    "Français": "fr_FR",
+                    "French": "fr_FR",
+                    "fr_FR": "fr_FR",
+                    "fr": "fr_FR",
+                    "fr-CA": "fr_CA",
+                    "fr_CA": "fr_CA",
+                    "Français (Canada)": "fr_CA",
+                    "German": "de_DE",
+                    "Deutsch": "de_DE",
+                    "de": "de_DE",
+                    "de_DE": "de_DE",
+                    "Italian": "it_IT",
+                    "Italiano": "it_IT",
+                    "it_IT": "it_IT",
+                    "it": "it_IT",
+                    "ja-JP": "ja_JP",
+                    "ja_JP": "ja_JP",
+                    "ja": "ja_JP",
+                    "日本語": "ja_JP",
+                    "Japanese": "ja_JP",
+                    "Dutch": "nl_NL",
+                    "nl": "nl_NL",
+                    "nl_NL": "nl_NL",
+                    "Netherlands": "nl_NL",
+                    "Nederlands": "nl_NL",
+                    "Polski": "pl_PL",
+                    "pl_PL": "pl_PL",
+                    "pl": "pl_PL",
+                    "Polish": "pl_PL",
+                    "Spanish": "es_ES",
+                    "Español": "es_ES",
+                    "Espanol": "es_ES",
+                    "es_ES": "es_ES",
+                    "es": "es_ES",
+                    "es_es": "es_ES",
+                    "es-ES": "es_ES",
+                    "he": "he_HE",
+                    "he_HE": "he_HE",
+                    "עברית": "he_HE",
+                    "fi": "fi_FI",
+                    "Suomi": "fi_FI",
+                    "fi_FI": "fi_FI",
+                    "Svenska": "sv_SE",
+                    "sv_SE": "sv_SE",
+                    "sv": "sv_SE",
+                    "Portuguese": "pt_BR",
+                    "Português do Brasil": "pt_BR",
+                    "pt": "pt_BR",
+                    "pt_BR": "pt_BR",
+                    "pt-BR": "pt_BR",
+                    "Brazilian Português": "pt_BR",
+                    "Türkçe": "tr_TR",
+                    "tr_TR": "tr_TR",
+                    "tr": "tr_TR",
+                    "Русский": "ru_RU",
+                    "ru_RU": "ru_RU",
+                    "ru": "ru_RU",
+                    "ภาษาไทย": "th_TH",
+                    "th": "th_TH",
+                    "th_TH": "th_TH"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "country": {
+          "macro": "standard_macros.chained_macro",
+          "kwargs": {
+            "inner_macro_list": [
+              {
+                "kwargs": {
+                  "default": "69276",
+                  "question_id": "q_country",
+                  "picklist_label": "country"
+                },
+                "macro": "successfactor_macros.extract_app_qna_value"
+              },
+              {
+                "macro": "adapter_macros.substitute_template",
+                "kwargs": {
+                  "template_string": "{{ macro_values[0] if macro_values[0] != 'Turkey' else 'Türkiye' }}"
+                }
+              }
+            ]
+          }
+        },
+        "location_country": {
+          "macro": "successfactor_macros.extract_app_qna_value",
+          "kwargs": {
+            "question_id": "q_country",
+            "picklist_code": "country",
+            "default": ""
+          }
+        },
+        "customRaceAfrica": {
+          "kwargs": {
+            "picklist_id": "rmSAfricaRace",
+            "question_id": "q_customRaceAfrica"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customCandBkgrdPreOffer": {
+          "kwargs": {
+            "question_id": "q_customCandBkgrdPreOffer",
+            "picklist_id": "yesno"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "cust_mgrapproval": {
+          "kwargs": {
+            "question_id": "q_cust_mgrapproval",
+            "picklist_id": "yesNo"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customNationality": {
+          "kwargs": {
+            "question_id": "q_customNationality"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customSalaryExp": {
+          "kwargs": {
+            "question_id": "q_customSalaryExp1"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "CustBRAdisability": {
+          "kwargs": {
+            "question_id": "q_CustBRAdisability",
+            "picklist_id": "BRAdisability"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customGenderBRA": {
+          "kwargs": {
+            "question_id": "q_customGenderBRA",
+            "picklist_id": "Bra_GenderRM"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "CustEtniaCorBRA": {
+          "kwargs": {
+            "question_id": "q_CustEtniaCorBRA",
+            "picklist_id": "RMBRAEtniaCor"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "CustBRAIfnoDis": {
+          "kwargs": {
+            "question_id": "q_CustBRAIfnoDis",
+            "picklist_id": "Braifnodisability"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "BRAcustomSalaryExp": {
+          "kwargs": {
+            "question_id": "q_BRAcustomSalaryExp"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customRaceUS": {
+          "macro": "standard_macros.chained_macro",
+          "kwargs": {
+            "inner_macro_list": [
+              {
+                "macro": "successfactor_macros.extract_app_qna_value",
+                "kwargs": {
+                  "question_id": "q_customEthnicity"
+                }
+              },
+              {
+                "macro": "successfactor_macros.extract_app_qna_value",
+                "kwargs": {
+                  "question_id": "q_customRaceUS_q_customEthnicity_{{ macro_values[0] }}",
+                  "picklist_id": "rmUSRace"
+                }
+              }
+            ]
+          }
+        },
+        "veteranStatus": {
+          "kwargs": {
+            "question_id": "q_veteranStatus",
+            "picklist_id": "rmUSVetStatus"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "disabilityStatus": {
+          "kwargs": {
+            "question_id": "q_disabilityStatus",
+            "picklist_id": "rmUSDisability"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "cust_Pronoun": {
+          "kwargs": {
+            "picklist_id": "rm_PersonPronouns",
+            "question_id": "q_genderPronouns"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "cust_isApprentice18OrOlder": {
+          "kwargs": {
+            "picklist_id": "rm_older",
+            "question_id": "q_cust_isApprentice18OrOlder"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "cust_PreferredFirstName": {
+          "kwargs": {
+            "question_id": "q_cust_PreferredFirstName"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "cust_PreferredLastName": {
+          "kwargs": {
+            "question_id": "q_cust_PreferredLastName"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "address": {
+          "kwargs": {
+            "default": "NA",
+            "question_id": "q_addressLine1"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "zip": {
+          "kwargs": {
+            "question_id": "q_zip"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "city": {
+          "kwargs": {
+            "default": "NA",
+            "question_id": "q_city"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customDeereCapacity": {
+          "kwargs": {
+            "picklist_id": "rmPrevAtDeere",
+            "question_id": "q_customDeereCapacity"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customDeereRelatedEE": {
+          "kwargs": {
+            "picklist_id": "yesno",
+            "question_id": "q_customDeereRelatedEE"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customDeereRelatedEEYes": {
+          "kwargs": {
+            "question_id": "q_customDeereRelatedEEYes"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customGenderPreOffer": {
+          "kwargs": {
+            "question_id": "q_customGenderPreOffer",
+            "picklist_id": "rmGender"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customComp": {
+          "kwargs": {
+            "question_id": "q_customComp"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customInvestmentChina": {
+          "kwargs": {
+            "question_id": "q_customInvestmentChina",
+            "picklist_id": "yesno"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customInvestmentChinaYes": {
+          "kwargs": {
+            "question_id": "q_customInvestmentChinaYes"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customMarried": {
+          "kwargs": {
+            "question_id": "q_customMarried",
+            "picklist_id": "yesno"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customDisabilityAfrica": {
+          "kwargs": {
+            "question_id": "q_customDisabilityAfrica",
+            "picklist_id": "yesno"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customAddnCandAttach": {
+          "kwargs": {
+            "question_id": "q_customRecrAttach"
+          },
+          "macro": "successfactor_macros.extract_attachment_payload"
+        }
+      },
+      "3026": {
+        "coverLetter": {
+          "macro": "standard_macros.chained_macro",
+          "kwargs": {
+            "inner_macro_list": [
+              {
+                "macro": "successfactor_macros.extract_attachment_payload",
+                "kwargs": {
+                  "question_id": "q_coverLetter"
+                }
+              },
+              {
+                "macro": "adapter_macros.substitute_template",
+                "kwargs": {
+                  "template_string": "{{ macro_values[0][0] if macro_values[0][0] else None }}"
+                }
+              }
+            ]
+          }
+        },
+        "cust_isApprentice18OrOlder": {
+          "kwargs": {
+            "question_id": "q_cust_isApprentice18OrOlder",
+            "picklist_id": "rm_older",
+            "default": "3644470"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customEthnicity": {
+          "kwargs": {
+            "question_id": "q_customEthnicity",
+            "picklist_id": "ethnicity"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customGenderPostOffer": {
+          "kwargs": {
+            "question_id": "q_customGenderPostOffer",
+            "picklist_id": "rmGender",
+            "default": "67470"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "middleName": {
+          "kwargs": {
+            "question_id": "q_middleName"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "state": {
+          "macro": "standard_macros.chained_macro",
+          "kwargs": {
+            "inner_macro_list": [
+              {
+                "macro": "successfactor_macros.extract_app_qna_value",
+                "kwargs": {
+                  "question_id": "q_country"
+                }
+              },
+              {
+                "macro": "successfactor_macros.extract_app_qna_value",
+                "kwargs": {
+                  "question_id": "q_state_q_country_{{ macro_values[0] }}",
+                  "picklist_id": "rmState"
+                }
+              }
+            ]
+          }
+        },
+        "appLocale": {
+          "macro": "standard_macros.chained_macro",
+          "kwargs": {
+            "inner_macro_list": [
+              {
+                "kwargs": {
+                  "template_string": "{{ candidate.applications[0].custom_info.get('apply_locale', 'en_US') if candidate.applications and candidate.applications[0].custom_info else 'en_US' }}"
+                },
+                "macro": "adapter_macros.substitute_template"
+              },
+              {
+                "macro": "successfactor_macros.transform_value_field",
+                "kwargs": {
+                  "value": "{{ macro_values[0] }}",
+                  "value_remap": {
+                    "English US": "en_US",
+                    "en-US": "en_US",
+                    "en_US": "en_US",
+                    "en": "en_US",
+                    "English": "en_US",
+                    "Chinese": "zh_CN",
+                    "简体中文": "zh_CN",
+                    "zh_CN": "zh_CN",
+                    "zh-CN": "zh_CN",
+                    "Français": "fr_FR",
+                    "French": "fr_FR",
+                    "fr_FR": "fr_FR",
+                    "fr": "fr_FR",
+                    "fr-CA": "fr_CA",
+                    "fr_CA": "fr_CA",
+                    "Français (Canada)": "fr_CA",
+                    "German": "de_DE",
+                    "Deutsch": "de_DE",
+                    "de": "de_DE",
+                    "de_DE": "de_DE",
+                    "Italian": "it_IT",
+                    "Italiano": "it_IT",
+                    "it_IT": "it_IT",
+                    "it": "it_IT",
+                    "ja-JP": "ja_JP",
+                    "ja_JP": "ja_JP",
+                    "ja": "ja_JP",
+                    "日本語": "ja_JP",
+                    "Japanese": "ja_JP",
+                    "Dutch": "nl_NL",
+                    "nl": "nl_NL",
+                    "nl_NL": "nl_NL",
+                    "Netherlands": "nl_NL",
+                    "Nederlands": "nl_NL",
+                    "Polski": "pl_PL",
+                    "pl_PL": "pl_PL",
+                    "pl": "pl_PL",
+                    "Polish": "pl_PL",
+                    "Spanish": "es_ES",
+                    "Español": "es_ES",
+                    "Espanol": "es_ES",
+                    "es_ES": "es_ES",
+                    "es": "es_ES",
+                    "es_es": "es_ES",
+                    "es-ES": "es_ES",
+                    "he": "he_HE",
+                    "he_HE": "he_HE",
+                    "עברית": "he_HE",
+                    "fi": "fi_FI",
+                    "Suomi": "fi_FI",
+                    "fi_FI": "fi_FI",
+                    "Svenska": "sv_SE",
+                    "sv_SE": "sv_SE",
+                    "sv": "sv_SE",
+                    "Portuguese": "pt_BR",
+                    "Português do Brasil": "pt_BR",
+                    "pt": "pt_BR",
+                    "pt_BR": "pt_BR",
+                    "pt-BR": "pt_BR",
+                    "Brazilian Português": "pt_BR",
+                    "Türkçe": "tr_TR",
+                    "tr_TR": "tr_TR",
+                    "tr": "tr_TR",
+                    "Русский": "ru_RU",
+                    "ru_RU": "ru_RU",
+                    "ru": "ru_RU",
+                    "ภาษาไทย": "th_TH",
+                    "th": "th_TH",
+                    "th_TH": "th_TH"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "country": {
+          "macro": "standard_macros.chained_macro",
+          "kwargs": {
+            "inner_macro_list": [
+              {
+                "kwargs": {
+                  "default": "69276",
+                  "question_id": "q_country",
+                  "picklist_label": "country"
+                },
+                "macro": "successfactor_macros.extract_app_qna_value"
+              },
+              {
+                "macro": "adapter_macros.substitute_template",
+                "kwargs": {
+                  "template_string": "{{ macro_values[0] if macro_values[0] != 'Turkey' else 'Türkiye' }}"
+                }
+              }
+            ]
+          }
+        },
+        "location_country": {
+          "macro": "successfactor_macros.extract_app_qna_value",
+          "kwargs": {
+            "question_id": "q_country",
+            "picklist_code": "country",
+            "default": ""
+          }
+        },
+        "customRaceAfrica": {
+          "kwargs": {
+            "picklist_id": "rmSAfricaRace",
+            "question_id": "q_customRaceAfrica"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customCandBkgrdPreOffer": {
+          "kwargs": {
+            "question_id": "q_customCandBkgrdPreOffer",
+            "picklist_id": "yesno"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "cust_mgrapproval": {
+          "kwargs": {
+            "question_id": "q_cust_mgrapproval",
+            "picklist_id": "yesNo"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customNationality": {
+          "kwargs": {
+            "question_id": "q_customNationality"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customSalaryExp": {
+          "kwargs": {
+            "question_id": "q_customSalaryExp1"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "CustBRAdisability": {
+          "kwargs": {
+            "question_id": "q_CustBRAdisability",
+            "picklist_id": "BRAdisability"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customGenderBRA": {
+          "kwargs": {
+            "question_id": "q_customGenderBRA",
+            "picklist_id": "Bra_GenderRM"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "CustEtniaCorBRA": {
+          "kwargs": {
+            "question_id": "q_CustEtniaCorBRA",
+            "picklist_id": "RMBRAEtniaCor"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "CustBRAIfnoDis": {
+          "kwargs": {
+            "question_id": "q_CustBRAIfnoDis",
+            "picklist_id": "Braifnodisability"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "BRAcustomSalaryExp": {
+          "kwargs": {
+            "question_id": "q_BRAcustomSalaryExp"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customRaceUS": {
+          "macro": "standard_macros.chained_macro",
+          "kwargs": {
+            "inner_macro_list": [
+              {
+                "macro": "successfactor_macros.extract_app_qna_value",
+                "kwargs": {
+                  "question_id": "q_customEthnicity"
+                }
+              },
+              {
+                "macro": "successfactor_macros.extract_app_qna_value",
+                "kwargs": {
+                  "question_id": "q_customRaceUS_q_customEthnicity_{{ macro_values[0] }}",
+                  "picklist_id": "rmUSRace"
+                }
+              }
+            ]
+          }
+        },
+        "veteranStatus": {
+          "kwargs": {
+            "question_id": "q_veteranStatus",
+            "picklist_id": "rmUSVetStatus"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "disabilityStatus": {
+          "kwargs": {
+            "question_id": "q_disabilityStatus",
+            "picklist_id": "rmUSDisability"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "cust_Pronoun": {
+          "kwargs": {
+            "picklist_id": "rm_PersonPronouns",
+            "question_id": "q_genderPronouns"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "cust_PreferredFirstName": {
+          "kwargs": {
+            "question_id": "q_cust_PreferredFirstName"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "cust_PreferredLastName": {
+          "kwargs": {
+            "question_id": "q_cust_PreferredLastName"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "address": {
+          "kwargs": {
+            "default": "NA",
+            "question_id": "q_addressLine1"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "zip": {
+          "kwargs": {
+            "question_id": "q_zip"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "city": {
+          "kwargs": {
+            "default": "NA",
+            "question_id": "q_city"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customDeereCapacity": {
+          "kwargs": {
+            "picklist_id": "rmPrevAtDeere",
+            "question_id": "q_customDeereCapacity"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customDeereRelatedEE": {
+          "kwargs": {
+            "picklist_id": "yesno",
+            "question_id": "q_customDeereRelatedEE"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customDeereRelatedEEYes": {
+          "kwargs": {
+            "question_id": "q_customDeereRelatedEEYes"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customGenderPreOffer": {
+          "kwargs": {
+            "question_id": "q_customGenderPreOffer",
+            "picklist_id": "rmGender"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customComp": {
+          "kwargs": {
+            "question_id": "q_customComp"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "cust_areYou18OrOlder": {
+          "kwargs": {
+            "question_id": "q_cust_areYou18OrOlder",
+            "picklist_id": "rm_older"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customInvestmentChina": {
+          "kwargs": {
+            "question_id": "q_customInvestmentChina",
+            "picklist_id": "yesno"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customInvestmentChinaYes": {
+          "kwargs": {
+            "question_id": "q_customInvestmentChinaYes"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customMarried": {
+          "kwargs": {
+            "question_id": "q_customMarried",
+            "picklist_id": "yesno"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customDisabilityAfrica": {
+          "kwargs": {
+            "question_id": "q_customDisabilityAfrica",
+            "picklist_id": "yesno"
+          },
+          "macro": "successfactor_macros.extract_app_qna_value"
+        },
+        "customAddnCandAttach": {
+          "kwargs": {
+            "question_id": "q_customRecrAttach"
+          },
+          "macro": "successfactor_macros.extract_attachment_payload"
+        }
+      }
+    },
+    "add_candidate": {
+      "coverLetter": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "successfactor_macros.extract_attachment_payload",
+              "kwargs": {
+                "question_id": "cover_letter"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ macro_values[0] if macro_values[0] else None }}"
+              }
+            }
+          ]
+        }
+      },
+      "cusomContactMe": {
+        "kwargs": {
+          "default": "3526",
+          "question_id": "q_cusomContactMe",
+          "picklist_id": "yesno"
+        },
+        "macro": "successfactor_macros.extract_app_qna_value"
+      },
+      "cust_Pronoun": {
+        "macro": "successfactor_macros.extract_app_qna_value",
+        "kwargs": {
+          "picklist_id": "rm_PersonPronouns",
+          "question_id": "q_genderPronouns"
+        }
+      },
+      "cust_isApprentice18OrOlder": {
+        "kwargs": {
+          "default": "3644470",
+          "picklist_id": "rm_older",
+          "question_id": "q_cust_isApprentice18OrOlder"
+        },
+        "macro": "successfactor_macros.extract_app_qna_value"
+      },
+      "homePhone": {
+        "kwargs": {
+          "question_id": "q_cellPhone"
+        },
+        "macro": "successfactor_macros.extract_app_qna_value"
+      },
+      "middleName": {
+        "kwargs": {
+          "question_id": "q_middleName"
+        },
+        "macro": "successfactor_macros.extract_app_qna_value"
+      },
+      "shareProfile": {
+        "macro": "successfactor_macros.extract_app_qna_value",
+        "kwargs": {
+          "default": "1",
+          "question_id": "q_contactconsent"
+        }
+      },
+      "candidateLocale": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "kwargs": {
+                "template_string": "{{ candidate.applications[0].custom_info.get('apply_locale','en_US') if candidate.applications and candidate.applications[0].custom_info else 'en_US' }}"
+              },
+              "macro": "adapter_macros.substitute_template"
+            },
+            {
+              "macro": "successfactor_macros.transform_value_field",
+              "kwargs": {
+                "value": "{{ macro_values[0] }}",
+                "value_remap": {
+                  "English US": "en_US",
+                  "en-US": "en_US",
+                  "en_US": "en_US",
+                  "en": "en_US",
+                  "English": "en_US",
+                  "Chinese": "zh_CN",
+                  "简体中文": "zh_CN",
+                  "zh_CN": "zh_CN",
+                  "zh-CN": "zh_CN",
+                  "Français": "fr_FR",
+                  "French": "fr_FR",
+                  "fr_FR": "fr_FR",
+                  "fr": "fr_FR",
+                  "fr_CA": "fr_CA",
+                  "fr-CA": "fr_CA",
+                  "Français (Canada)": "fr_CA",
+                  "German": "de_DE",
+                  "Deutsch": "de_DE",
+                  "de": "de_DE",
+                  "de_DE": "de_DE",
+                  "Italian": "it_IT",
+                  "Italiano": "it_IT",
+                  "it_IT": "it_IT",
+                  "it": "it_IT",
+                  "ja-JP": "ja_JP",
+                  "ja_JP": "ja_JP",
+                  "ja": "ja_JP",
+                  "日本語": "ja_JP",
+                  "Japanese": "ja_JP",
+                  "Dutch": "nl_NL",
+                  "nl": "nl_NL",
+                  "nl_NL": "nl_NL",
+                  "Netherlands": "nl_NL",
+                  "Nederlands": "nl_NL",
+                  "Polski": "pl_PL",
+                  "pl_PL": "pl_PL",
+                  "pl": "pl_PL",
+                  "Polish": "pl_PL",
+                  "Spanish": "es_ES",
+                  "Español": "es_ES",
+                  "Espanol": "es_ES",
+                  "es_ES": "es_ES",
+                  "es": "es_ES",
+                  "es_es": "es_ES",
+                  "es-ES": "es_ES",
+                  "he": "he_HE",
+                  "he_HE": "he_HE",
+                  "עברית": "he_HE",
+                  "fi": "fi_FI",
+                  "Suomi": "fi_FI",
+                  "fi_FI": "fi_FI",
+                  "Svenska": "sv_SE",
+                  "sv_SE": "sv_SE",
+                  "sv": "sv_SE",
+                  "Portuguese": "pt_BR",
+                  "Português do Brasil": "pt_BR",
+                  "pt": "pt_BR",
+                  "pt_BR": "pt_BR",
+                  "pt-BR": "pt_BR",
+                  "Brazilian Português": "pt_BR",
+                  "Türkçe": "tr_TR",
+                  "tr_TR": "tr_TR",
+                  "tr": "tr_TR",
+                  "Русский": "ru_RU",
+                  "ru_RU": "ru_RU",
+                  "ru": "ru_RU",
+                  "ภาษาไทย": "th_TH",
+                  "th": "th_TH",
+                  "th_TH": "th_TH"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "cust_PreferredFirstName": {
+        "kwargs": {
+          "question_id": "q_cust_PreferredFirstName"
+        },
+        "macro": "successfactor_macros.extract_app_qna_value"
+      },
+      "cust_PreferredLastName": {
+        "kwargs": {
+          "question_id": "q_cust_PreferredLastName"
+        },
+        "macro": "successfactor_macros.extract_app_qna_value"
+      },
+      "address": {
+        "kwargs": {
+          "default": "NA",
+          "question_id": "q_addressLine1"
+        },
+        "macro": "successfactor_macros.extract_app_qna_value"
+      },
+      "zip": {
+        "kwargs": {
+          "default": "NA",
+          "question_id": "q_zip"
+        },
+        "macro": "successfactor_macros.extract_app_qna_value"
+      },
+      "city": {
+        "kwargs": {
+          "default": "NA",
+          "question_id": "q_city"
+        },
+        "macro": "successfactor_macros.extract_app_qna_value"
+      },
+      "state": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "successfactor_macros.extract_app_qna_value",
+              "kwargs": {
+                "question_id": "q_country"
+              }
+            },
+            {
+              "macro": "successfactor_macros.extract_app_qna_value",
+              "kwargs": {
+                "default": "66327",
+                "question_id": "q_state_q_country_{{ macro_values[0] }}",
+                "picklist_id": "rmState"
+              }
+            }
+          ]
+        }
+      },
+      "country": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "kwargs": {
+                "default": "69276",
+                "question_id": "q_country",
+                "picklist_label": "country"
+              },
+              "macro": "successfactor_macros.extract_app_qna_value"
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ macro_values[0] if macro_values[0] != 'Turkey' else 'Türkiye' }}"
+              }
+            }
+          ]
+        }
+      },
+      "agreeToPrivacyStatement": {
+        "macro": "adapter_macros.substitute_template",
+        "kwargs": {
+          "template_string": "{{ 'true' }}"
+        }
+      }
+    },
+    "position": {
+      "custom_info.set_id": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "statusSetId"
+        }
+      },
+      "location_country": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "country"
+        }
+      },
+      "custom_info.jobGrade": {
+        "kwargs": {
+          "expr": "jobGrade.results[0].externalCode"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.BusinessUnit": {
+        "kwargs": {
+          "expr": "businessUnit_obj.name_localized"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "location_state": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "filter2"
+        }
+      },
+      "custom_info.HRWTest_obj": {
+        "kwargs": {
+          "expr": "HRWTest_obj"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.postalcode": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "postalcode"
+        }
+      },
+      "custom_info.PWL_city": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "PWL_City"
+        }
+      },
+      "custom_info.city": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "city"
+        }
+      },
+      "location_city": {
+        "macro": "adapter_macros.substitute_template",
+        "kwargs": {
+          "template_string": "{{position.custom_info.get('PWL_city', '') if position.custom_info.get('city', '')=='' else position.custom_info.get('city','') }}",
+          "use_native_typing": false
+        }
+      },
+      "custom_info.PWL_PostalCode": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "PWL_PostalCode"
+        }
+      },
+      "custom_info.zipcode": {
+        "macro": "adapter_macros.substitute_template",
+        "kwargs": {
+          "template_string": "{{position.custom_info.get('PWL_PostalCode', '') if position.custom_info.get('postalcode', '')=='' else position.custom_info.get('postalcode','') }}"
+        }
+      },
+      "posting_title": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "externalTitle"
+        }
+      },
+      "business_unit": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "businessUnit_obj.name_localized"
+        }
+      },
+      "hiring_band": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "custONB_PayGrade"
+        }
+      },
+      "job_function": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "filter4"
+        }
+      },
+      "employment_type": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customReqCandType"
+        }
+      },
+      "company": {
+        "macro": "adapter_macros.substitute_template",
+        "kwargs": {
+          "template_string": "John Deere"
+        }
+      },
+      "custom_info.position_number": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "positionNumber"
+        }
+      },
+      "custom_info.position_location": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "filter2"
+        }
+      },
+      "custom_info.job_function": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "filter4"
+        }
+      },
+      "custom_info.type_of_position": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customReqCandType"
+        }
+      },
+      "custom_info.physical_work_location": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "custONB_PWL"
+        }
+      },
+      "custom_info.business_unit": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "businessUnit_obj.name_localized"
+        }
+      },
+      "restrict_access": {
+        "kwargs": {
+          "template_string": "{{true if position.employment_type==\"Confidential\" else false}}"
+        },
+        "macro": "adapter_macros.substitute_template"
+      },
+      "custom_info.location_city_state": {
+        "macro": "adapter_macros.substitute_template",
+        "kwargs": {
+          "template_string": "{{position.location_city}}, {{position.location_state}}"
+        }
+      },
+      "is_open": {
+        "macro": "adapter_macros.map_open_positions",
+        "kwargs": {
+          "statuses": ["Open", "Approved", "On Hold"]
+        }
+      },
+      "posting_url": {
+        "macro": "adapter_macros.substitute_template",
+        "kwargs": {
+          "template_string": "https://career8.successfactors.com/sfcareer/jobreqcareer?jobId={{position.job_id}}&company=1161975P"
+        }
+      },
+      "_fetch": {
+        "jr": {
+          "custom_info.position_location": {
+            "field": "filter2/picklistLabels"
+          },
+          "jobGrade": {
+            "field": "jobGrade"
+          },
+          "custom_info.job_function": {
+            "field": "filter4/picklistLabels"
+          },
+          "custom_info.type_of_position": {
+            "field": "customReqCandType/picklistLabels"
+          },
+          "custom_info.HRWTest_obj": {
+            "field": "HRWTest_obj"
+          },
+          "custom_info.physical_work_location": {
+            "field": "cust_AlternateLocation"
+          },
+          "custom_info.hr_contact": {
+            "field": "coordinator"
+          },
+          "business_unit": {
+            "field": "businessUnit_obj"
+          },
+          "recruiterTeam": {
+            "field": "recruiterTeam"
+          },
+          "secondRecruiterTeam": {
+            "field": "secondRecruiterTeam"
+          },
+          "secondRecruiter": {
+            "field": "secondRecruiter"
+          },
+          "hiringManagerTeam": {
+            "field": "hiringManagerTeam"
+          },
+          "coordinatorTeam": {
+            "field": "coordinatorTeam"
+          },
+          "sourcerTeam": {
+            "field": "sourcerTeam"
+          }
+        },
+        "list_positions": {
+          "country": {
+            "field": "country",
+            "skip_expand": true
+          }
+        }
+      },
+      "custom_info.jobGradefilter": {
+        "macro": "adapter_macros.substitute_template",
+        "kwargs": {
+          "template_string": "{{ '\"not specified\"' if position.custom_info.get('jobGrade', '')=='' else '\"00\"' if position.custom_info.get('jobGrade', '')=='00' else '\"10\"' if position.custom_info.get('jobGrade', '')=='10' else '\"11\"' if position.custom_info.get('jobGrade', '')=='11' else '\"12\"' if position.custom_info.get('jobGrade', '')=='12' else '\"13\"' if position.custom_info.get('jobGrade', '')=='13' else '\"14\"' if position.custom_info.get('jobGrade', '')=='14' else '\"15\"' if position.custom_info.get('jobGrade', '')=='15' else position.custom_info.get('jobGrade','')}}"
+        }
+      },
+      "followers": {
+        "macro": "successfactor_macros.extract_recruiting_team_followers",
+        "kwargs": {
+          "recruiting_teams": [
+            "secondRecruiterTeam",
+            "secondRecruiter",
+            "hiringManagerTeam",
+            "coordinatorTeam",
+            "sourcerTeam"
+          ]
+        }
+      },
+      "custom_info.time_to_fill": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "timeToFill"
+        }
+      },
+      "is_private": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path_all",
+              "kwargs": {
+                "expr": "_postings"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% if macro_values[0] %}{% for posting in macro_values[0] %}{% if posting.postingStatus == 'Success' or posting.postingStatus == 'Updated' %}{% if posting.boardId == '_private_external' or posting.boardId == '_private_internal' %}{{true}}{% endif %}{% endif %}{% endfor %}{% endif %}"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{true if macro_values[1] else false}}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.boardId": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path_all",
+              "kwargs": {
+                "expr": "_postings"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% set boardIds = [] %}{% if macro_values[0] %}{% for posting in macro_values[0] %}{% if posting.postingStatus == 'Success' or posting.postingStatus == 'Updated' %}{% if posting.boardId == '_private_external' or posting.boardId == '_private_internal' %}{% set _ = boardIds.append(posting.boardId) %}{% endif %}{% endif %}{% endfor %}{% endif %}{% if boardIds %}{{ boardIds[0] }}{% endif %}"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "application": {
+      "_fetch": {
+        "jobs_applied_by_candidate": {
+          "gender": {
+            "description": "",
+            "field": "customGenderPreOffer/picklistLabels"
+          },
+          "custom_info.q_customGenderPreOffer_txt": {
+            "field": "customGenderPreOffer/picklistLabels"
+          },
+          "custom_info.q_cust_isApprentice18OrOlder_txt": {
+            "field": "cust_isApprentice18OrOlder/picklistLabels"
+          },
+          "race": {
+            "field": "customRaceUS/picklistLabels"
+          },
+          "custom_info.q_customGenderPostOffer_txt": {
+            "field": "customGenderPostOffer/picklistLabels"
+          },
+          "custom_info.q_genderPronouns_txt": {
+            "field": "cust_Pronoun/picklistLabels"
+          },
+          "custom_info.q_customCandBkgrdPreOffer_txt": {
+            "field": "customCandBkgrdPreOffer/picklistLabels"
+          },
+          "custom_info.q_customInvestmentChina_txt": {
+            "field": "customInvestmentChina/picklistLabels"
+          },
+          "custom_info.q_customMarried_txt": {
+            "field": "customMarried/picklistLabels"
+          },
+          "custom_info.q_cust_mgrapproval_txt": {
+            "field": "cust_mgrapproval/picklistLabels"
+          },
+          "custom_info.q_cusomContactMe_txt": {
+            "field": "cusomContactMe/picklistLabels"
+          },
+          "custom_info.q_cust_areYou18OrOlder_txt": {
+            "field": "cust_areYou18OrOlder/picklistLabels"
+          },
+          "custom_info.q_CustBRAdisability_txt": {
+            "field": "CustBRAdisability/picklistLabels"
+          },
+          "custom_info.q_customGenderBRA_txt": {
+            "field": "customGenderBRA/picklistLabels"
+          },
+          "custom_info.q_CustEtniaCorBRA_txt": {
+            "field": "CustEtniaCorBRA/picklistLabels"
+          },
+          "custom_info.q_CustBRAIfnoDis_txt": {
+            "field": "CustBRAIfnoDis/picklistLabels"
+          },
+          "custom_info.q_customRaceUS_txt": {
+            "field": "customRaceUS/picklistLabels"
+          },
+          "custom_info.q_customRaceAfrica_txt": {
+            "field": "customRaceAfrica/picklistLabels"
+          },
+          "customEthnicity": {
+            "field": "customEthnicity/picklistLabels"
+          },
+          "disabilityStatus": {
+            "field": "disabilityStatus/picklistLabels"
+          },
+          "veteranStatus": {
+            "field": "veteranStatus/picklistLabels"
+          },
+          "cust_HRWinterviewURL": {
+            "field": "cust_HRWinterviewURL",
+            "skip_expand": true
+          },
+          "cust_HRWTestScore": {
+            "field": "cust_HRWTestScore",
+            "skip_expand": true
+          },
+          "cust_HRWTestPercentage": {
+            "field": "cust_HRWTestPercentage",
+            "skip_expand": true
+          },
+          "cust_HRWTestInviteStart": {
+            "field": "cust_HRWTestInviteStart",
+            "skip_expand": true
+          },
+          "cust_HRWTestInviteEnd": {
+            "field": "cust_HRWTestInviteEnd",
+            "skip_expand": true
+          },
+          "cust_HRWTestStatus": {
+            "field": "cust_HRWTestStatus",
+            "skip_expand": true
+          },
+          "cust_HRWTestReporturl": {
+            "field": "cust_HRWTestReporturl",
+            "skip_expand": true
+          },
+          "cust_HRWTestResulturl": {
+            "field": "cust_HRWTestResulturl",
+            "skip_expand": true
+          },
+          "appLocale": {
+            "field": "appLocale",
+            "skip_expand": true
+          },
+          "jobAppStatus": {
+            "field": "jobAppStatus",
+            "skip_expand": false
+          }
+        }
+      },
+      "custom_info.jobAppStatus": {
+        "kwargs": {
+          "expr": "jobAppStatus"
+        },
+        "macro": "standard_macros.extract_path_all"
+      },
+      "custom_info.q_customGenderPreOffer_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customGenderPreOffer"
+        }
+      },
+      "custom_info.q_cust_isApprentice18OrOlder_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "cust_isApprentice18OrOlder"
+        }
+      },
+      "custom_info.q_customCandBkgrdPreOffer_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customCandBkgrdPreOffer"
+        }
+      },
+      "custom_info.cust_PreferredFirstName_txt": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "cust_PreferredFirstName"
+        }
+      },
+      "custom_info.cust_PreferredLastName_txt": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "cust_PreferredLastName"
+        }
+      },
+      "custom_info.q_genderPronouns_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "cust_Pronoun"
+        }
+      },
+      "custom_info.q_customGenderPostOffer_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customGenderPostOffer"
+        }
+      },
+      "custom_info.q_cellPhone": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "homePhone"
+        }
+      },
+      "custom_info.q_customSalaryExp_txt": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "customSalaryExp"
+        }
+      },
+      "custom_info.q_cust_mgrapproval_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "cust_mgrapproval"
+        }
+      },
+      "custom_info.q_CustBRAdisability_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "CustBRAdisability"
+        }
+      },
+      "custom_info.q_customGenderBRA_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customGenderBRA"
+        }
+      },
+      "custom_info.q_CustEtniaCorBRA_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "CustEtniaCorBRA"
+        }
+      },
+      "custom_info.q_CustBRAIfnoDis_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "CustBRAIfnoDis"
+        }
+      },
+      "custom_info.q_BRAcustomSalaryExp_txt": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "BRAcustomSalaryExp"
+        }
+      },
+      "custom_info.q_customRaceAfrica_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customRaceAfrica"
+        }
+      },
+      "custom_info.q_customNationality": {
+        "kwargs": {
+          "expr": "customNationality"
+        },
+        "macro": "standard_macros.extract_path_all"
+      },
+      "custom_info.q_middleName_txt": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "middleName"
+        }
+      },
+      "custom_info.q_cust_areYou18OrOlder_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "cust_areYou18OrOlder"
+        }
+      },
+      "custom_info.q_customInvestmentChina_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customInvestmentChina"
+        }
+      },
+      "custom_info.q_customInvestmentChinaYes_txt": {
+        "macro": "standard_macros.extract_path_all",
+        "kwargs": {
+          "expr": "customInvestmentChinaYes"
+        }
+      },
+      "custom_info.q_cusomContactMe_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "cusomContactMe"
+        }
+      },
+      "custom_info.q_customMarried_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customMarried"
+        }
+      },
+      "custom_info.q_customEthnicity_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customEthnicity"
+        }
+      },
+      "gender": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "kwargs": {
+                "lowercase": false,
+                "_append_list_attr": true,
+                "picklist_field": "customGenderPreOffer"
+              },
+              "macro": "successfactor_macros.extract_picklist_field"
+            },
+            {
+              "kwargs": {
+                "lowercase": false,
+                "_append_list_attr": true,
+                "picklist_field": "customGenderPostOffer"
+              },
+              "macro": "successfactor_macros.extract_picklist_field"
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{macro_values[0] or macro_values[1]}}"
+              }
+            }
+          ]
+        }
+      },
+      "veteran_status": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "successfactor_macros.extract_picklist_field",
+              "kwargs": {
+                "picklist_field": "veteranStatus"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{true if 'I am a protected veteran' in (macro_values[0] or '') else false if 'I am not a protected veteran' in (macro_values[0] or '') else None}}"
+              }
+            }
+          ]
+        }
+      },
+      "disability_status": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "successfactor_macros.extract_picklist_field",
+              "kwargs": {
+                "picklist_field": "disabilityStatus"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{true if 'I have a disability' in (macro_values[0] or '') else false if 'I don\\'t have a disability' in (macro_values[0] or '') else None}}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.q_customComp": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "customComp"
+        }
+      },
+      "custom_info.q_customRaceUS_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customRaceUS"
+        }
+      },
+      "race": {
+        "macro": "adapter_macros.substitute_template",
+        "kwargs": {
+          "template_string": "{{application.custom_info.get('q_customRaceAfrica_txt', '') if application.custom_info.get('q_customRaceUS_txt', '')=='' else application.custom_info.get('q_customRaceUS_txt','') }}"
+        }
+      },
+      "races": {
+        "description": "self declared",
+        "kwargs": {
+          "_append_list_attr": true,
+          "template_string": "{{application.race}}"
+        },
+        "macro": "adapter_macros.substitute_template"
+      },
+      "cust_HRWinterviewURL": {
+        "kwargs": {
+          "expr": "cust_HRWinterviewURL"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.cust_HRWTestScore": {
+        "kwargs": {
+          "expr": "cust_HRWTestScore"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.cust_HRWTestPercentage": {
+        "kwargs": {
+          "expr": "cust_HRWTestPercentage"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.cust_HRWTestInviteStart": {
+        "kwargs": {
+          "field_name": "cust_HRWTestInviteStart",
+          "date_format": "%a, %b %-d %Y"
+        },
+        "macro": "successfactor_macros.extract_standard_date_field"
+      },
+      "custom_info.cust_HRWTestInviteEnd": {
+        "kwargs": {
+          "field_name": "cust_HRWTestInviteEnd",
+          "date_format": "%a, %b %-d %Y"
+        },
+        "macro": "successfactor_macros.extract_standard_date_field"
+      },
+      "custom_info.cust_HRWTestStatus": {
+        "kwargs": {
+          "expr": "cust_HRWTestStatus"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.cust_HRWTestReporturl": {
+        "kwargs": {
+          "expr": "cust_HRWTestReporturl"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.test": {
+        "macro": "pipeline_display_two_rows",
+        "kwargs": {
+          "upper_field": "cust_HRWTestStatus",
+          "lower_field": "cust_HRWTestScore"
+        }
+      },
+      "custom_info.cust_HRWTestResulturl": {
+        "kwargs": {
+          "expr": "cust_HRWTestResulturl"
+        },
+        "macro": "standard_macros.extract_path"
+      }
+    },
+    "candidate": {
+      "_fetch": {
+        "fetch_candidate": {
+          "ethnicity": {
+            "field": "customEthnicity/picklistLabels"
+          },
+          "candidateLocale": {
+            "field": "candidateLocale",
+            "skip_expand": true
+          },
+          "custom_info.q_cust_PreferredFirstName_txt": {
+            "field": "cust_PreferredFirstName",
+            "skip_expand": true
+          },
+          "custom_info.q_cust_PreferredLastName_txt": {
+            "field": "cust_PreferredLastName",
+            "skip_expand": true
+          },
+          "custom_info.q_customRaceUS_txt": {
+            "field": "customRaceUS",
+            "skip_expand": true
+          },
+          "custom_info.q_customRaceAfrica_txt": {
+            "field": "customRaceAfrica",
+            "skip_expand": true
+          },
+          "custom_info.candidateRace": {
+            "field": "race",
+            "skip_expand": true
+          }
+        },
+        "candidate": {
+          "custom_info.certificates": {
+            "field": "certificates"
+          },
+          "custom_info.certificates1": {
+            "field": "certificates1"
+          },
+          "custom_info.cust_Pronoun": {
+            "field": "cust_Pronoun/picklistLabels"
+          },
+          "custom_info.education1": {
+            "field": "education1"
+          },
+          "custom_info.gender": {
+            "field": "user/empInfo/personNav/personalInfoNav"
+          },
+          "custom_info.cust_isApprentice18OrOlder": {
+            "field": "cust_isApprentice18OrOlder/picklistLabels"
+          },
+          "custom_info.jobsApplied": {
+            "field": "jobsApplied/customGenderPreOffer/picklistLabels"
+          }
+        }
+      },
+      "_filters": {
+        "list_candidates": ["country ne 'CN'"]
+      },
+      "ethnicity": {
+        "macro": "adapter_macros.substitute_template",
+        "kwargs": {
+          "template_string": "{{candidate.ethnicity}}"
+        }
+      },
+      "contact_consent": {
+        "macro": "successfactor_macros.extract_and_map_contact_consent",
+        "kwargs": {
+          "contact_consent_mapping": {
+            "default": "all",
+            "Any company recruiter worldwide": "all",
+            "Only recruiters managing jobs I applied to": "applied_only"
+          }
+        }
+      },
+      "custom_info.education1": {
+        "kwargs": {
+          "expr": "education1.results[0].externalCode"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.gender": {
+        "kwargs": {
+          "expr": "user.empInfo.personNav.personalInfoNav.results[0].gender"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.q_cust_PreferredLastName_txt": {
+        "kwargs": {
+          "expr": "cust_PreferredLastName"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.q_cust_PreferredFirstName_txt": {
+        "kwargs": {
+          "expr": "cust_PreferredFirstName"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.q_genderPronouns": {
+        "kwargs": {
+          "expr": "cust_Pronoun.results[0].externalCode"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.q_customRaceAfrica_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customRaceAfrica"
+        }
+      },
+      "custom_info.q_customRaceUS_txt": {
+        "macro": "successfactor_macros.extract_picklist_field",
+        "kwargs": {
+          "picklist_field": "customRaceUS"
+        }
+      },
+      "custom_info.candidateRace": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "race"
+        }
+      },
+      "custom_info.certificates": {
+        "kwargs": {
+          "expr": "certificates.results[0].externalCode"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.certificates1": {
+        "kwargs": {
+          "expr": "certificates1.results[0].externalCode"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.cust_isApprentice18OrOlder": {
+        "kwargs": {
+          "expr": "cust_isApprentice18OrOlder.results[0].picklistLabels.results[0].label"
+        },
+        "macro": "standard_macros.extract_path"
+      },
+      "custom_info.candidateLocale": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "candidateLocale"
+              }
+            },
+            {
+              "kwargs": {
+                "template_string": "{{ {\"en_US\": \"English US\", \"en-US\": \"English US\", \"zh_CN\": \"Chinese/简体中文\", \"zh-CN\":\"Chinese/简体中文\", \"fr_FR\": \"French/Français\", \"fr\": \"French/Français\", \"de_DE\":\"German/Deutsch\", \"de\":\"German/Deutsch\",\"it_IT\": \"Italian/Italiano\", \"it\": \"Italian/Italiano\", \"ja_JP\": \"Japanese/日本語\",\"ja-JP\": \"Japanese/日本語\", \"ja\": \"Japanese/日本語\", \"nl_NL\": \"Dutch/Nederlands\", \"nl\": \"Dutch/Nederlands\", \"pl_PL\": \"Polish/Polski\", \"pl\": \"Polish/Polski\", \"es_ES\": \"Spanish/Español\", \"es\": \"Spanish/Español\", \"es_es\": \"Spanish/Español\", \"es-ES\": \"Spanish/Español\", \"fi_FI\": \"Finnish/Suomi\", \"fi\": \"Finnish/Suomi\", \"sv_SE\": \"Swedish/Svenska\", \"sv\": \"Swedish/Svenska\", \"pt_BR\": \"Portuguese/Português\",\"pt\": \"Portuguese/Português\", \"pt_BR\": \"Portuguese/Português\", \"pt-BR\": \"Portugues/Português\", \"tr_TR\": \"Turkish/Türkçe\",\"tr\": \"Turkish/Türkçe\", \"ru_RU\": \"Russian/Русский\", \"ru\": \"Russian/Русский\", \"th_TH\": \"Thai/ภาษาไทย\", \"th\": \"Thai/ภาษาไทย\"}[macro_values[0]] | default(macro_values[0]) }}"
+              },
+              "macro": "adapter_macros.substitute_template"
+            }
+          ]
+        }
+      },
+      "race": {
+        "macro": "adapter_macros.substitute_template",
+        "kwargs": {
+          "template_string": "{{candidate.race}}"
+        }
+      },
+      "gender": {
+        "kwargs": {
+          "template_string": "{{ null if candidate is none else candidate.custom_info.gender if (candidate.custom_info.gender is defined and candidate.custom_info.gender is not none ) else candidate.gender }}"
+        },
+        "macro": "adapter_macros.substitute_template"
+      },
+      "custom_info.PreferredFirstName": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "cust_PreferredFirstName"
+              }
+            },
+            {
+              "kwargs": {
+                "expr": "firstName"
+              },
+              "macro": "standard_macros.extract_path"
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% if macro_values[0] %}{{macro_values[0]}}{% elif macro_values[1] %}{{macro_values[1]}}{% endif %}"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "employee": {
+      "_fetch": {
+        "education": {
+          "degree_nav": {
+            "field": "degreeNav/picklistLabels"
+          },
+          "country_nav": {
+            "field": "countryNav"
+          }
+        },
+        "employee_additional_fields": {
+          "emailNav": {
+            "field": "emailNav/emailType",
+            "skip_expand": true
+          },
+          "dateOfBirth": {
+            "field": "dateOfBirth",
+            "skip_expand": true
+          },
+          "phoneNav": {
+            "field": "phoneNav",
+            "skip_expand": false
+          },
+          "employmentNav/jobInfoNav": {
+            "field": "employmentNav/jobInfoNav"
+          },
+          "employmentNav/userNav": {
+            "field": "employmentNav/userNav"
+          },
+          "personalInfoNav": {
+            "field": "personalInfoNav"
+          },
+          "employmentNav/jobInfoNav/locationNav": {
+            "field": " employmentNav/jobInfoNav/locationNav"
+          },
+          "employmentNav/jobInfoNav/locationNav/addressNavDEFLT": {
+            "field": " employmentNav/jobInfoNav/locationNav/addressNavDEFLT"
+          },
+          "employmentNav/jobInfoNav/locationNav/addressNavDEFLT/stateNav": {
+            "field": " employmentNav/jobInfoNav/locationNav/addressNavDEFLT/stateNav"
+          },
+          "employmentNav/jobInfoNav/jobCodeNav/jobFunctionNav/cust_JobFunctionNav": {
+            "field": " employmentNav/jobInfoNav/jobCodeNav/jobFunctionNav/cust_JobFunctionNav"
+          },
+          "custom_info.nonremote": {
+            "field": "employmentNav/jobInfoNav/customString20Nav"
+          },
+          "custom_info.externalCode": {
+            "field": "employmentNav/jobInfoNav/customString110Nav"
+          },
+          "custom_info.remote": {
+            "field": "homeAddressNavDEFLT/stateNav"
+          }
+        }
+      },
+      "custom_info.has_business_email": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "emailNav.results"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% if macro_values[0] %}{% for email in macro_values[0] %}{% if email.emailType == '160532' %}{{email.emailAddress}}{% endif %}{% endfor %}{% endif %}"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{true if macro_values[1] else false}}"
+              }
+            }
+          ]
+        }
+      },
+      "email": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "emailNav.results"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% if macro_values[0] %}{% for email in macro_values[0] %}{% if email.emailType == '160532' %}{{email.emailAddress}}{% endif %}{% endfor %}{% endif %}"
+              }
+            }
+          ]
+        }
+      },
+      "business_email": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "emailNav.results"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% if macro_values[0] %}{% for email in macro_values[0] %}{% if email.emailType == '160532' %}{{email.emailAddress}}{% endif %}{% endfor %}{% endif %}"
+              }
+            }
+          ]
+        }
+      },
+      "is_contingent": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].userNav.custom11"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% if macro_values[0] is not none %}{{ true if 'External' in macro_values[0] else false }}{% else %}False{% endif %}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.contingent_worker_flag": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].userNav.custom11"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ 'Contingent Worker' if employee.is_contingent is true }}"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ 'Internal' if macro_values[0] is not none and employee.is_contingent is false }}"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ 'External' if macro_values[0] is none }}"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ macro_values[1] if macro_values[1] else macro_values[2] if macro_values[2] else macro_values[3] if macro_values[3] }}"
+              }
+            }
+          ]
+        }
+      },
+      "termination_date": {
+        "macro": "successfactor_macros.extract_date_field",
+        "kwargs": {
+          "field_name": "companyExitDate",
+          "date_format": "%s"
+        }
+      },
+      "education.school": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "school"
+        }
+      },
+      "education.degree": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "degree"
+        }
+      },
+      "_filters": {
+        "fetch_employee": ["asOfDate"]
+      },
+      "custom_info.function": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].userNav.custom13"
+        }
+      },
+      "employee_type": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].userNav.custom11"
+        }
+      },
+      "custom_info.city": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].jobInfoNav.results[0].locationNav.addressNavDEFLT.city"
+        }
+      },
+      "custom_info.state": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].jobInfoNav.results[0].locationNav.addressNavDEFLT.stateNav.externalCode"
+        }
+      },
+      "custom_info.country": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].jobInfoNav.results[0].locationNav.addressNavDEFLT.country"
+        }
+      },
+      "custom_info.location": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString110Nav.externalCode"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString20Nav.cust_City"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString20Nav.cust_Province"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString20Nav.cust_Country"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "homeAddressNavDEFLT.results[0].city"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "homeAddressNavDEFLT.results[0].stateNav.externalCode"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "homeAddressNavDEFLT.results[0].country"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{((macro_values[4] if  macro_values[4] else '')+','+(macro_values[5] if  macro_values[5] else '')+','+(macro_values[6] if  macro_values[6] else '')) if macro_values[0]=='Yes' else ((macro_values[1] if  macro_values[1] else '')+','+(macro_values[2] if  macro_values[2] else '')+','+(macro_values[3] if  macro_values[3] else ''))}}"
+              }
+            }
+          ]
+        }
+      },
+      "location": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString110Nav.externalCode"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString20Nav.cust_City"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString20Nav.cust_Province"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString20Nav.cust_Country"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "homeAddressNavDEFLT.results[0].city"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "homeAddressNavDEFLT.results[0].stateNav.externalCode"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "homeAddressNavDEFLT.results[0].country"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{((macro_values[4] if  macro_values[4] else '')+','+(macro_values[5] if  macro_values[5] else '')+','+(macro_values[6] if  macro_values[6] else '')) if macro_values[0]=='Yes' else ((macro_values[1] if  macro_values[1] else '')+','+(macro_values[2] if  macro_values[2] else '')+','+(macro_values[3] if  macro_values[3] else ''))}}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.business_location": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString110Nav.externalCode"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString20Nav.cust_City"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString20Nav.cust_Province"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "employmentNav.results[0].jobInfoNav.results[0].customString20Nav.cust_Country"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "homeAddressNavDEFLT.results[0].city"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "homeAddressNavDEFLT.results[0].stateNav.externalCode"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "homeAddressNavDEFLT.results[0].country"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{((macro_values[4] if  macro_values[4] else '')+','+(macro_values[5] if  macro_values[5] else '')+','+(macro_values[6] if  macro_values[6] else '')) if macro_values[0]=='Yes' else ((macro_values[1] if  macro_values[1] else '')+','+(macro_values[2] if  macro_values[2] else '')+','+(macro_values[3] if  macro_values[3] else ''))}}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.preferred_first_name": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "personalInfoNav.results[0].businessFirstName"
+        }
+      },
+      "role_change_date": {
+        "macro": "successfactor_macros.extract_standard_date_field",
+        "kwargs": {
+          "field_name": "employmentNav.results[0].jobInfoNav.results[0].jobEntryDate"
+        }
+      },
+      "custom_info.lob_location": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].jobInfoNav.results[0].locationNav.name"
+        }
+      },
+      "custom_info.levelString13": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].jobInfoNav.results[0].customString13"
+        }
+      },
+      "custom_info.level": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].jobInfoNav.results[0].customString13"
+        }
+      },
+      "level": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].jobInfoNav.results[0].jobCodeNav.grade"
+        }
+      },
+      "manager_email": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].jobInfoNav.results[0].managerUserNav.email"
+        }
+      },
+      "manager_fullname": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].jobInfoNav.results[0].managerUserNav.displayName"
+        }
+      },
+      "manager_userid": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].jobInfoNav.results[0].managerUserNav.userId"
+        }
+      },
+      "manager_contact_email": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].jobInfoNav.results[0].managerUserNav.email"
+        }
+      },
+      "custom_info.department": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].userNav.department"
+        }
+      },
+      "custom_info.orgunit": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].userNav.LMSOrgUnitDesc"
+        }
+      },
+      "custom_info.region": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].userNav.custom03"
+        }
+      },
+      "custom_info.business_phone": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "phoneNav.results[?phoneType==146044].phoneNumber"
+        }
+      },
+      "custom_info.jobEntryDate": {
+        "kwargs": {
+          "field_name": "employmentNav.results[0].jobInfoNav.results[0].jobEntryDate",
+          "date_format": "epoch"
+        },
+        "macro": "successfactor_macros.extract_standard_date_field"
+      },
+      "custom_info.is_employee_eligible_to_work": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "successfactor_macros.extract_standard_date_field",
+              "kwargs": {
+                "field_name": "dateOfBirth"
+              }
+            },
+            {
+              "macro": "date_macros.get_duration_from_current_date",
+              "kwargs": {
+                "date": "{{macro_values[0]}}",
+                "unit": "years"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% if macro_values[1] and macro_values[1] >= 18 %}{{true}}{% elif macro_values[1] and macro_values[1] < 18 %}{{false}}{% else %}{{None}}{% endif %}"
+              }
+            }
+          ]
+        }
+      },
+      "first_name": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "firstName"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "personalInfoNav.results[0].businessFirstName"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% if macro_values[0] %}{{macro_values[0]}}{% else %}{{macro_values[1]}}{% endif %}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.business_phone2": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "employmentNav.results[0].userNav.businessPhone"
+        }
+      }
+    },
+    "employee.additional_fields": {
+      "custom_info.development_activities": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "successfactor_macros.fetch_employee_data_from_endpoint",
+              "kwargs": {
+                "endpoint": "Background_DevelopmentGoal",
+                "field_mapping": {
+                  "development_activity.activity_name": {
+                    "source_field_path": "activity"
+                  },
+                  "development_activity.complete": {
+                    "picklist_field": "completeNav"
+                  },
+                  "development_activity.status": {
+                    "macro": "adapter_macros.substitute_template",
+                    "kwargs": {
+                      "template_string": "Complete"
+                    }
+                  }
+                },
+                "post_fetch_filters": [
+                  {
+                    "picklist_field": "completeNav",
+                    "field_value": "Yes"
+                  }
+                ]
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ macro_values[0] if macro_values[0] else []   }}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.development_goals_and_planned_devp_activities": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "successfactor_macros.fetch_employee_data_from_endpoint",
+              "kwargs": {
+                "endpoint": "Background_DevelopmentGoal",
+                "field_mapping": {
+                  "development_goal.development_goal": {
+                    "source_field_path": "goal"
+                  },
+                  "development_goal.complete": {
+                    "picklist_field": "completeNav"
+                  },
+                  "development_goal.activity": {
+                    "source_field_path": "activity"
+                  }
+                },
+                "post_fetch_filters": [
+                  {
+                    "picklist_field": "completeNav",
+                    "field_value": "No"
+                  }
+                ],
+                "group_by": {
+                  "key_field_path": "development_goal.development_goal",
+                  "value_field_path": "development_goal.activity",
+                  "grouped_field_path": "development_goal.planned_devp_activities"
+                }
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ macro_values[0] if macro_values[0] else []   }}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.career_aspirations": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "successfactor_macros.fetch_employee_data_from_endpoint",
+              "kwargs": {
+                "endpoint": "Background_CareerAsiprations",
+                "field_mapping": {
+                  "": {
+                    "source_field_path": "description"
+                  }
+                }
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ macro_values[0][0] if macro_values[0] else '' }}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.potential_next_experiences": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "successfactor_macros.fetch_employee_data_from_endpoint",
+              "kwargs": {
+                "endpoint": "Background_NextExperiences",
+                "field_mapping": {
+                  "potential_next_experience.next_experience": {
+                    "source_field_path": "description"
+                  },
+                  "potential_next_experience.timeframe": {
+                    "source_field_path": "timeframe"
+                  }
+                }
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ macro_values[0] if macro_values[0] else []   }}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.strengths": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "successfactor_macros.fetch_employee_data_from_endpoint",
+              "kwargs": {
+                "endpoint": "Background_ProfessionalStrengths",
+                "field_mapping": {
+                  "": {
+                    "source_field_path": "strengthAreas"
+                  }
+                }
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ macro_values[0] if macro_values[0] else []   }}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.projects": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "successfactor_macros.fetch_employee_data_from_endpoint",
+              "kwargs": {
+                "endpoint": "Background_ProjectExperienceNew",
+                "field_mapping": {
+                  "time": {
+                    "macro": "standard_macros.chained_macro",
+                    "kwargs": {
+                      "inner_macro_list": [
+                        {
+                          "macro": "successfactor_macros.extract_standard_date_field",
+                          "kwargs": {
+                            "field_name": "startDate",
+                            "date_format": "%Y-%m-%d"
+                          }
+                        },
+                        {
+                          "macro": "successfactor_macros.extract_standard_date_field",
+                          "kwargs": {
+                            "field_name": "endDate",
+                            "date_format": "%Y-%m-%d"
+                          }
+                        },
+                        {
+                          "macro": "adapter_macros.substitute_template",
+                          "kwargs": {
+                            "template_string": "{{ [macro_values[0], macro_values[1]] }}"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "title": {
+                    "source_field_path": "project"
+                  },
+                  "ats_data.start_ts": {
+                    "macro": "successfactor_macros.extract_standard_date_field",
+                    "kwargs": {
+                      "field_name": "startDate",
+                      "date_format": "%Y-%m-%d"
+                    }
+                  },
+                  "ats_data.end_ts": {
+                    "macro": "successfactor_macros.extract_standard_date_field",
+                    "kwargs": {
+                      "field_name": "endDate",
+                      "date_format": "%Y-%m-%d"
+                    }
+                  },
+                  "ats_data.title": {
+                    "source_field_path": "project"
+                  }
+                }
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{{ macro_values[0] if macro_values[0] else []   }}"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "employee.external_experience": {
+      "title": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "title"
+        }
+      },
+      "start_ts": {
+        "macro": "successfactor_macros.extract_standard_date_field",
+        "kwargs": {
+          "field_name": "start",
+          "date_format": "epoch"
+        }
+      },
+      "end_ts": {
+        "macro": "successfactor_macros.extract_standard_date_field",
+        "kwargs": {
+          "field_name": "end",
+          "date_format": "epoch"
+        }
+      }
+    },
+    "employee.internal_experience": {
+      "title": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "title"
+        }
+      },
+      "start_ts": {
+        "macro": "successfactor_macros.extract_standard_date_field",
+        "kwargs": {
+          "field_name": "start",
+          "date_format": "epoch"
+        }
+      },
+      "end_ts": {
+        "macro": "successfactor_macros.extract_standard_date_field",
+        "kwargs": {
+          "field_name": "end",
+          "date_format": "epoch"
+        }
+      }
+    },
+    "employee.education": {
+      "start_ts": {
+        "macro": "successfactor_macros.extract_standard_date_field",
+        "kwargs": {
+          "field_name": "start",
+          "date_format": "epoch"
+        }
+      },
+      "end_ts": {
+        "macro": "successfactor_macros.extract_standard_date_field",
+        "kwargs": {
+          "field_name": "end",
+          "date_format": "epoch"
+        }
+      },
+      "degree": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "degree_new"
+        }
+      },
+      "major": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "major_new"
+        }
+      }
+    },
+    "role": {
+      "_fetch": {
+        "jp": {
+          "cust_JobCodeNav/jobFunctionNav": {
+            "field": "cust_JobCodeNav/jobFunctionNav"
+          },
+          "cust_JobCodeNav/jobFunctionNav/cust_JobFunctionNav": {
+            "field": "cust_JobCodeNav/jobFunctionNav/cust_JobFunctionNav"
+          },
+          "cust_JobCodeNav/jobLevelNav/picklistLabels": {
+            "field": "cust_JobCodeNav/jobLevelNav/picklistLabels"
+          }
+        }
+      },
+      "_filters": {
+        "list_roles": ["status eq 'A'"]
+      },
+      "role_description": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "longDesciptions.results[0].desc_localized"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "headers.results[0].desc_defaultValue"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "jobResponsibilityContents.results[? (entityNav.libName_defaultValue='KFA' & entityNav.category_defaultValue='General Experience')].entityNav.name_defaultValue"
+              }
+            },
+            {
+              "macro": "standard_macros.extract_path",
+              "kwargs": {
+                "expr": "jobResponsibilityContents.results[? (entityNav.libName_defaultValue='KFA' & entityNav.category_defaultValue='Managerial Experience')].entityNav.name_defaultValue"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% if macro_values[0] is not none %}{{ macro_values[0] }}{% endif %}{% if macro_values[1] is not none %}<br><b>Major Duties</b><br>{{ macro_values[1] }}{% endif %}{% if macro_values[2] is not none %}<br><b>Work Experience</b><br><b>General Experience</b><br>{{ macro_values[2] }}{% endif %}{% if macro_values[3] is not none %}<br><b>Managerial Experience</b><br>{{ macro_values[3] }}{% endif %}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.JobFamilyid": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "cust_JobCodeNav.results[0].jobFunctionNav.externalCode"
+        }
+      },
+      "custom_info.LevelName": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "cust_JobCodeNav.results[0].jobLevelNav.picklistLabels.results[0].label"
+        }
+      },
+      "custom_info.lastModifiedDateTime": {
+        "kwargs": {
+          "field_name": "lastModifiedDateTime",
+          "date_format": "%m/%d/%Y"
+        },
+        "macro": "successfactor_macros.extract_standard_date_field"
+      },
+      "custom_info.name_defaultValue": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "name_defaultValue"
+        }
+      },
+      "custom_info.Title": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "name_defaultValue"
+        }
+      },
+      "custom_info.JobLevelName": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path_all",
+              "kwargs": {
+                "expr": "\"jobResponsibilityContents\".\"results\"[*]"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% for my_item in macro_values[0] %}{%   if 'Job Level' in my_item.entityNav['libName_en_US'] %}{{ my_item.entityNav['name_localized'] }} {%   endif %}{% endfor %}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.JobLevel": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "cust_JobCodeNav.results[0].grade"
+        }
+      },
+      "custom_info.rolegrade": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "cust_JobCodeNav.results[0].grade"
+        }
+      },
+      "custom_info.majorDuties": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "headers.results[0].desc_defaultValue"
+        }
+      },
+      "custom_info.JobGrade": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "cust_JobCodeNav.results[0].cust_jobGrade"
+        }
+      },
+      "custom_info.careerLevel": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path_all",
+              "kwargs": {
+                "expr": "\"jobResponsibilityContents\".\"results\"[*]"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% for my_item in macro_values[0] %}{%   if 'Career Stream - Career Level' in my_item.entityNav['libName_en_US'] %}{{ my_item.entityNav['name_localized'] }} {%   endif %}{% endfor %}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.RoleNameLocalized": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "roleNav.name_localized"
+        }
+      },
+      "custom_info.JobFamily": {
+        "macro": "standard_macros.chained_macro",
+        "kwargs": {
+          "inner_macro_list": [
+            {
+              "macro": "standard_macros.extract_path_all",
+              "kwargs": {
+                "expr": "\"jobResponsibilityContents\".\"results\"[*]"
+              }
+            },
+            {
+              "macro": "adapter_macros.substitute_template",
+              "kwargs": {
+                "template_string": "{% for my_item in macro_values[0] %}{%   if 'Job Family' in my_item.entityNav['libName_en_US'] %}{{ my_item.entityNav['name_localized'] }} {%   endif %}{% endfor %}"
+              }
+            }
+          ]
+        }
+      },
+      "custom_info.JobFunction": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "cust_JobCodeNav.results[0].jobFunctionNav.cust_JobFunctionNav.externalName_defaultValue"
+        }
+      }
+    },
+    "role.skill_details.skill_groups": {
+      "skill_group": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "skillNav.category_en_US"
+        }
+      },
+      "proficiency": {
+        "macro": "standard_macros.extract_path",
+        "kwargs": {
+          "expr": "proLevel_localized"
+        }
+      }
+    }
+  }
+}
