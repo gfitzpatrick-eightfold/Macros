@@ -2,7 +2,7 @@ import os
 import json
 import argparse
 from dotenv import load_dotenv
-from classes.macro_generator import MacroGenerator
+from classes.macro_assistant import MacroAssistant
 
 def load_api_response(file_path: str) -> dict:
     """Load and validate the API response from a JSON file."""
@@ -23,8 +23,10 @@ def main():
     # Load environment variables from .env file
     load_dotenv()
     
-    # Get OpenAI API key from environment variable
+    # Get OpenAI API key and Assistant ID from environment variables
     api_key = os.getenv("OPENAI_API_KEY")
+    assistant_id = os.getenv("OPENAI_ASSISTANT_ID")
+    
     if not api_key:
         raise ValueError(
             "OpenAI API key not found. Please:\n"
@@ -32,8 +34,15 @@ def main():
             "2. Add your OpenAI API key to the .env file"
         )
     
-    # Initialize generator
-    generator = MacroGenerator(api_key)
+    if not assistant_id:
+        raise ValueError(
+            "OpenAI Assistant ID not found. Please:\n"
+            "1. Create an assistant in the OpenAI UI\n"
+            "2. Add the assistant ID to your .env file as OPENAI_ASSISTANT_ID"
+        )
+    
+    # Initialize assistant
+    assistant = MacroAssistant(api_key, assistant_id)
     
     # Load API response
     if args.api_response:
@@ -54,7 +63,7 @@ def main():
         raise ValueError("Requirement cannot be empty")
     
     try:
-        macro = generator.generate_macro(user_requirement, api_sample)
+        macro = assistant.generate_macro(user_requirement, api_sample)
         print("\nGenerated Macro:")
         print(json.dumps(macro, indent=2))
     except Exception as e:

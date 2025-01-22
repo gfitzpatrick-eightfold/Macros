@@ -5,3 +5,5 @@ I want to create a override an existing field called role_description. It should
 -headers.results[0].desc_defaultValue
 -jobResponsibilityContents.results[? (entityNav.libName_defaultValue='KFA' & entityNav.category_defaultValue='General Experience')].entityNav.name_defaultValue
 -jobResponsibilityContents.results[? (entityNav.libName_defaultValue='KFA' & entityNav.category_defaultValue='Managerial Experience')].entityNav.name_defaultValue
+
+I want to extract the createdDateTime timestampbut have it show in a human readble format
