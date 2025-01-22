@@ -1,0 +1,7 @@
+I want to create a new field called JobFamilyid that pulls the first entry from the following path cust_JobCodeNav.results[0].jobLevelNav.picklistLabels.results[0].label
+
+I want to create a override an existing field called role_description. It should be combined from a few fields:
+-longDesciptions.results[0].desc_localized
+-headers.results[0].desc_defaultValue
+-jobResponsibilityContents.results[? (entityNav.libName_defaultValue='KFA' & entityNav.category_defaultValue='General Experience')].entityNav.name_defaultValue
+-jobResponsibilityContents.results[? (entityNav.libName_defaultValue='KFA' & entityNav.category_defaultValue='Managerial Experience')].entityNav.name_defaultValue
